@@ -1,0 +1,35 @@
+# Quartus Prime
+*.qpf
+*.qsf
+*.rpt
+*.summary
+*.sopcinfo
+*.sof
+*.bak
+*.bak_bak
+*.db
+db/
+incremental_db/
+simulation/
+synthesis/
+output_files/
+*.smsg
+*.htm
+*.txt
+*.pin
+*.sld
+*.map
+*.srf
+*.summary_html
+
+# ModelSim
+transcript
+*.vstf
+*.vst~
+*.wlf
+*.log
+*.key
+
+# Directorios de versionamiento específicos
+.vscode/
+.idea/
