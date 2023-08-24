@@ -1,5 +1,6 @@
 vendor_name = ModelSim
 source_file = 1, C:/Users/antho/OneDrive/Escritorio/TallerDiseno/amontero_digital_design_lab_2023/Problema_1/Decodificador.sv
+source_file = 1, C:/Users/antho/OneDrive/Escritorio/TallerDiseno/amontero_digital_design_lab_2023/Problema_1/Decodificador_tb.sv
 source_file = 1, C:/Users/antho/OneDrive/Escritorio/TallerDiseno/amontero_digital_design_lab_2023/Problema_1/db/Decodificador.cbx.xml
 design_name = Decodificador
 instance = comp, \seg_out[0]~output , seg_out[0]~output, Decodificador, 1
