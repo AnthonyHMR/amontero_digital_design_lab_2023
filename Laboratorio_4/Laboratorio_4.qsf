@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEMA5F31C6
-set_global_assignment -name TOP_LEVEL_ENTITY vga
+set_global_assignment -name TOP_LEVEL_ENTITY main
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 22.1STD.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "00:35:02  OCTOBER 06, 2023"
 set_global_assignment -name LAST_QUARTUS_VERSION "22.1std.1 Lite Edition"
@@ -57,7 +57,7 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_location_assignment PIN_B11 -to hsync
 set_location_assignment PIN_D11 -to vsync
 set_location_assignment PIN_AF14 -to clk
-set_location_assignment PIN_AC12 -to rst
+set_location_assignment PIN_AE12 -to rst
 set_global_assignment -name SYSTEMVERILOG_FILE vga_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE vga.sv
 set_global_assignment -name SYSTEMVERILOG_FILE clock_divider.sv
@@ -89,11 +89,51 @@ set_location_assignment PIN_F15 -to b[5]
 set_location_assignment PIN_G15 -to b[6]
 set_location_assignment PIN_J14 -to b[7]
 set_global_assignment -name SYSTEMVERILOG_FILE chessboard_gen.sv
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_location_assignment PIN_Y16 -to left_button
 set_location_assignment PIN_AA14 -to right_button
 set_location_assignment PIN_W15 -to up_button
 set_location_assignment PIN_AA15 -to down_button
+set_global_assignment -name SYSTEMVERILOG_FILE ball.sv
+set_global_assignment -name SYSTEMVERILOG_FILE drawings.sv
+set_global_assignment -name SYSTEMVERILOG_FILE Decodificador.sv
+set_global_assignment -name SYSTEMVERILOG_FILE square_move.sv
+set_location_assignment PIN_AB12 -to select
+set_location_assignment PIN_AD10 -to play
+set_location_assignment PIN_AC12 -to mark
+set_location_assignment PIN_AF9 -to switch_bomb[0]
+set_location_assignment PIN_AF10 -to switch_bomb[1]
+set_location_assignment PIN_AD11 -to switch_bomb[2]
+set_location_assignment PIN_AD12 -to switch_bomb[3]
+set_location_assignment PIN_AE26 -to bombs1[0]
+set_location_assignment PIN_AE27 -to bombs1[1]
+set_location_assignment PIN_AE28 -to bombs1[2]
+set_location_assignment PIN_AG27 -to bombs1[3]
+set_location_assignment PIN_AF28 -to bombs1[4]
+set_location_assignment PIN_AG28 -to bombs1[5]
+set_location_assignment PIN_AH28 -to bombs1[6]
+set_location_assignment PIN_AJ29 -to bombs2[0]
+set_location_assignment PIN_AH29 -to bombs2[1]
+set_location_assignment PIN_AH30 -to bombs2[2]
+set_location_assignment PIN_AG30 -to bombs2[3]
+set_location_assignment PIN_AF29 -to bombs2[4]
+set_location_assignment PIN_AF30 -to bombs2[5]
+set_location_assignment PIN_AD27 -to bombs2[6]
+set_location_assignment PIN_AA24 -to p_bombs1[0]
+set_location_assignment PIN_Y23 -to p_bombs1[1]
+set_location_assignment PIN_Y24 -to p_bombs1[2]
+set_location_assignment PIN_W22 -to p_bombs1[3]
+set_location_assignment PIN_W24 -to p_bombs1[4]
+set_location_assignment PIN_V23 -to p_bombs1[5]
+set_location_assignment PIN_W25 -to p_bombs1[6]
+set_location_assignment PIN_V25 -to p_bombs2[0]
+set_location_assignment PIN_AA28 -to p_bombs2[1]
+set_location_assignment PIN_Y27 -to p_bombs2[2]
+set_location_assignment PIN_AB27 -to p_bombs2[3]
+set_location_assignment PIN_AB26 -to p_bombs2[4]
+set_location_assignment PIN_AA26 -to p_bombs2[5]
+set_location_assignment PIN_AA25 -to p_bombs2[6]
+set_global_assignment -name SYSTEMVERILOG_FILE main.sv
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

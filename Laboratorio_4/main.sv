@@ -1,11 +1,10 @@
-module vga(
-		input logic clk, rst,
+module main(
+		input logic clk, rst, play, select, mark,
 		//input logic [11:0] matrix [3:0][3:0],
 		//input logic [2:0] state,
-		input logic up_button,   // Botón de arriba
-		input logic down_button, // Botón de abajo
-		input logic left_button, // Botón de izquierda
-		input logic right_button,
+		input logic up_button, down_button, left_button, right_button,
+		input logic [3:0] switch_bomb,
+		output logic [6:0] bombs1, bombs2, p_bombs1, p_bombs2,
 		output logic vgaclk, // 25.175 MHz VGA clock
 		output logic hsync, vsync,
 		output logic sync_b, blank_b, // To monitor & DAC
@@ -13,6 +12,10 @@ module vga(
 	); 
 	
 	logic [9:0] x, y;
+	logic b_draw, b_square, is_black_square, square_draw;
+	
+	Decodificador bombas1(switch_bomb % 4'b1010, bombs1);
+	Decodificador bombas2(switch_bomb / 4'b1010, bombs2);
 
 	// logic [3:0] state = 3'b011;
 	
@@ -26,28 +29,21 @@ module vga(
 
 	// Generate monitor timing signals
 	vga_controller vgaCont(vgaclk, hsync, vsync, sync_b, blank_b, x, y);
+	
 	// User-defined module to determine pixel color
 	//video_gen videoGen(x, y, state, matrix, r, g, b);
 	
-	//chessboard_gen board(x, y, r, g, b);
+	chessboard_gen board(x, y, is_black_square);
 	
-	//assign r = 8'b00000000;
-	//assign g = 8'b00000000;
-	//assign b = 8'b00000000;
+	ball bal_draw(vgaclk, x, y, b_draw, b_square);
 	
-	always @ (posedge vgaclk) begin
-		if(x > 220 && x < 420 && y >190 && y < 290) begin
-			r <= 8'b11111111;
-			g <= 8'b00000000;
-			b <= 8'b00000000;
-		end
-		else begin
-			r <= 8'b00000000;
-			g <= 8'b00000000;
-			b <= 8'b00000000;
-		end
-	end
+	square_move square(vgaclk, up_button, down_button, left_button, right_button, mark, x, y, square_draw);
 	
-	
+	drawings draw(	vgaclk,
+						b_draw, 
+						b_square,
+						is_black_square,
+						square_draw,
+						r, g, b);
 	
 endmodule
