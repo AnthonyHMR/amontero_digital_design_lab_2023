@@ -1,6 +1,6 @@
 module chessboard_gen(
     input logic [9:0] x, y,
-    output logic [7:0] r, g, b
+	 output logic is_black_square
 );
 
     // Define the dimensions of the chessboard
@@ -15,23 +15,9 @@ module chessboard_gen(
         col = x / SQUARE_SIZE;
     end
 
-    // Determine the color of each square (alternating black and white)
-    logic is_black_square;
+    // Determine the color of each square (alternating black and white);
     always_comb begin
         is_black_square = (row % 2 == 0) ? (col % 2 == 1) : (col % 2 == 0);
-    end
-
-    // Assign colors based on whether it's a black or white square
-    always_comb begin
-        if (is_black_square) begin
-            r = 8'b00000000; // Black
-            g = 8'b00000000;
-            b = 8'b00000000;
-        end else begin
-            r = 8'b11111111; // White
-            g = 8'b11111111;
-            b = 8'b11111111;
-        end
     end
 
 endmodule
