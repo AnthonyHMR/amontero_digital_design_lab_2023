@@ -1,8 +1,9 @@
-module square_move(
+module Selector(
 	input logic vgaclk,
-	input logic up_button, down_button, left_button, right_button, mark,
+	input logic up_button, down_button, left_button, right_button, mark, select, p_bombs, c_selected,
 	input logic [9:0] x, y,
-	output logic square_draw
+	output logic square_draw,
+	output reg is_marked, is_selected
 );
 //Ancho de bits en pantalla
 	localparam CORDW = 10;	
@@ -17,12 +18,13 @@ module square_move(
 	always_comb animate = (y == V_RES && x == 0);
 	
 	//cuadro "ball"
-	localparam B_SIZE = 80;			//16x16 pixels
+	localparam B_SIZE_X = 80;
+	localparam B_SIZE_Y = 60;
 	logic [CORDW-1:0] bx, by;  	//posición "ball"
 	logic dx, dy;						//dirección: derecha/abajo
 	logic flag = 1;
 	logic [CORDW-1:0] spx = 80;  	//velocidad horizontal
-	logic [CORDW-1:0] spy = 80;		//velocidad vertical
+	logic [CORDW-1:0] spy = 60;	//velocidad vertical
 	
 	//ball animation
 	always_ff @(posedge vgaclk) begin
@@ -31,7 +33,7 @@ module square_move(
 				dx <= 1;
 				bx <= bx - spx;
 				flag = 0;
-			end else if (!right_button && (bx < H_RES - B_SIZE) && flag) begin					//borde izquierdao pantalla
+			end else if (!right_button && (bx < H_RES - B_SIZE_X) && flag) begin					//borde izquierdao pantalla
 				dx = 0;
 				bx <= bx + spx;
 				flag = 0;
@@ -39,7 +41,7 @@ module square_move(
 				dy <= 1;
 				by <= by - spy;
 				flag = 0;
-			end else if (!down_button && (by < V_RES - B_SIZE) && flag) begin					//borde inferior pantalla
+			end else if (!down_button && (by < V_RES - B_SIZE_Y) && flag) begin					//borde inferior pantalla
 				dy = 0;
 				by <= by + spy;
 				flag = 0;
@@ -49,8 +51,12 @@ module square_move(
 		end		
 	end
 	
-	//dibujamos "ball"
+	localparam marco = 5;  // Espesor del marco
+	//dibujamos el selector
 	always_comb begin
-		square_draw = (x >= bx) && (x <= bx + B_SIZE) && (y >= by) && (y <= by + B_SIZE);
+		square_draw = (x >= bx && x <= bx + B_SIZE_X && y >= by && y <= by + B_SIZE_Y) && !(x >= bx + marco && x <= bx + B_SIZE_X - marco && y >= by + marco && y <= by + B_SIZE_Y - marco);
+		is_marked = mark ? (x >= bx && x <= bx + B_SIZE_X && y >= by && y <= by + B_SIZE_Y) : p_bombs;
+		//is_selected = select ? (x >= bx && x <= bx + B_SIZE_X && y >= by && y <= by + B_SIZE_Y) : c_selected;
 	end
+	
 endmodule

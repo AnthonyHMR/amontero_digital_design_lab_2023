@@ -1,4 +1,4 @@
-module ball(
+module Start_screen(
 	input logic vgaclk,
 	input logic [9:0] x, y,
 	output logic b_draw, b_square
@@ -10,11 +10,11 @@ module ball(
 	//tamaño de la pantalla
 	localparam H_RES_FULL = 800;
 	localparam V_RES_FULL = 525;
-	localparam H_RES = 640;
-	localparam V_RES = 480;
+	localparam H_RES = 420;
+	localparam V_RES = 290;
 	
 	logic animate; //Alto en 1 por cada clock tick en posición h o v
-	always_comb animate = (y == V_RES && x == 0);
+	always_comb animate = (y == V_RES && x == 220);
 	
 	//cuadro "ball"
 	localparam B_SIZE = 16;			//16x16 pixels
@@ -29,7 +29,7 @@ module ball(
 			if (bx >= H_RES - (spx + B_SIZE)) begin	//borde derecho pantalla
 				dx <= 1;
 				bx <= bx - spx;
-			end else if ((bx < spx)) begin					//borde izquierdao pantalla
+			end else if ((bx < 220)) begin					//borde izquierdao pantalla
 				dx = 0;
 				bx <= bx + spx;
 			end else bx <= (dx) ? bx - spx : bx + spx;
@@ -37,7 +37,7 @@ module ball(
 			if (by >= V_RES - (spy + B_SIZE)) begin	//borde superior pantalla
 				dy <= 1;
 				by <= by - spy;
-			end else if (by < spy) begin					//borde izquierdao pantalla
+			end else if (by < 190) begin					//borde izquierdao pantalla
 				dy = 0;
 				by <= by + spy;
 			end else by <= (dy) ? by - spy : by + spy;

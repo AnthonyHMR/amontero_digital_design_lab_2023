@@ -1,4 +1,4 @@
-module Decodificador (
+module BCDDecoder (
    input logic [3:0] in,
 	output logic [6:0] out
 );

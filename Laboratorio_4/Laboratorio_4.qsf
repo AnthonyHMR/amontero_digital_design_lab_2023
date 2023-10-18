@@ -47,9 +47,9 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
-set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (Verilog)"
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (SystemVerilog)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
@@ -59,7 +59,6 @@ set_location_assignment PIN_D11 -to vsync
 set_location_assignment PIN_AF14 -to clk
 set_location_assignment PIN_AE12 -to rst
 set_global_assignment -name SYSTEMVERILOG_FILE vga_controller.sv
-set_global_assignment -name SYSTEMVERILOG_FILE vga.sv
 set_global_assignment -name SYSTEMVERILOG_FILE clock_divider.sv
 set_location_assignment PIN_A11 -to vgaclk
 set_location_assignment PIN_C10 -to sync_b
@@ -93,10 +92,6 @@ set_location_assignment PIN_Y16 -to left_button
 set_location_assignment PIN_AA14 -to right_button
 set_location_assignment PIN_W15 -to up_button
 set_location_assignment PIN_AA15 -to down_button
-set_global_assignment -name SYSTEMVERILOG_FILE ball.sv
-set_global_assignment -name SYSTEMVERILOG_FILE drawings.sv
-set_global_assignment -name SYSTEMVERILOG_FILE Decodificador.sv
-set_global_assignment -name SYSTEMVERILOG_FILE square_move.sv
 set_location_assignment PIN_AB12 -to select
 set_location_assignment PIN_AD10 -to play
 set_location_assignment PIN_AC12 -to mark
@@ -133,7 +128,35 @@ set_location_assignment PIN_AB26 -to p_bombs2[4]
 set_location_assignment PIN_AA26 -to p_bombs2[5]
 set_location_assignment PIN_AA25 -to p_bombs2[6]
 set_global_assignment -name SYSTEMVERILOG_FILE main.sv
+set_global_assignment -name SYSTEMVERILOG_FILE BCDDecoder.sv
+set_global_assignment -name SYSTEMVERILOG_FILE Selector.sv
+set_global_assignment -name SYSTEMVERILOG_FILE Drawings.sv
+set_global_assignment -name SYSTEMVERILOG_FILE RandomNumberGenerator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE MatrixGenerator_bombs.sv
+set_global_assignment -name SYSTEMVERILOG_FILE MatrixGenerator_bombs_tb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE MaquinaSF.sv
+set_location_assignment PIN_AC9 -to replay
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE Start_screen.sv
+set_global_assignment -name SYSTEMVERILOG_FILE MaquinaSF_tb.sv
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH MaquinaSF_tb -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME MaquinaSF_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id MaquinaSF_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME MaquinaSF_tb -section_id MaquinaSF_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME MatrixGenerator_bombs_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id MatrixGenerator_bombs_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME MatrixGenerator_bombs_tb -section_id MatrixGenerator_bombs_tb
+set_global_assignment -name SYSTEMVERILOG_FILE Contador.sv
+set_global_assignment -name SYSTEMVERILOG_FILE main_testbench.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME main_testbench -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id main_testbench
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME main_testbench -section_id main_testbench
+set_global_assignment -name EDA_TEST_BENCH_FILE MaquinaSF_tb.sv -section_id MaquinaSF_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE MatrixGenerator_bombs_tb.sv -section_id MatrixGenerator_bombs_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE main_testbench.sv -section_id main_testbench
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

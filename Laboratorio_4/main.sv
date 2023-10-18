@@ -1,5 +1,5 @@
 module main(
-		input logic clk, rst, play, select, mark,
+		input logic clk, rst, play, replay, select, mark,
 		//input logic [11:0] matrix [3:0][3:0],
 		//input logic [2:0] state,
 		input logic up_button, down_button, left_button, right_button,
@@ -13,9 +13,19 @@ module main(
 	
 	logic [9:0] x, y;
 	logic b_draw, b_square, is_black_square, square_draw;
+	reg is_marked, is_selected;
+	logic inicio, start_game, loser, winner;
+	logic [3:0] count;
 	
-	Decodificador bombas1(switch_bomb % 4'b1010, bombs1);
-	Decodificador bombas2(switch_bomb / 4'b1010, bombs2);
+	BCDDecoder d_bombs1(switch_bomb % 4'b1010, bombs1);
+	BCDDecoder d_bombs2(switch_bomb / 4'b1010, bombs2);
+	
+	Contador counter(mark, rst, count);
+	
+	BCDDecoder d_p_bombs1(count % 4'b1010, p_bombs1);
+	BCDDecoder d_p_bombs2(count / 4'b1010, p_bombs2);
+	
+	MaquinaSF FSMachine(clk, rst, play, 0, 0, 0, inicio, start_game, loser, winner);
 
 	// logic [3:0] state = 3'b011;
 	
@@ -35,15 +45,18 @@ module main(
 	
 	chessboard_gen board(x, y, is_black_square);
 	
-	ball bal_draw(vgaclk, x, y, b_draw, b_square);
+	Start_screen start_s(vgaclk, x, y, b_draw, b_square);
 	
-	square_move square(vgaclk, up_button, down_button, left_button, right_button, mark, x, y, square_draw);
+	Selector selector(vgaclk, up_button, down_button, left_button, right_button, mark, select, is_marked, is_selected, x, y, square_draw, is_marked, is_selected);
 	
-	drawings draw(	vgaclk,
+	Drawings draw(	vgaclk,
 						b_draw, 
 						b_square,
 						is_black_square,
 						square_draw,
+						start_game,
+						is_marked,
+						is_selected,
 						r, g, b);
 	
 endmodule

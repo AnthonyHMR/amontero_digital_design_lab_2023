@@ -6,13 +6,14 @@ module chessboard_gen(
     // Define the dimensions of the chessboard
     parameter BOARD_WIDTH = 8;
     parameter BOARD_HEIGHT = 8;
-    parameter SQUARE_SIZE = 80; // Adjust this to fit your screen resolution
+    parameter SQUARE_SIZE_X = 80; // Adjust this to fit your screen resolution
+	 parameter SQUARE_SIZE_Y = 60;
 
     // Calculate the row and column within the chessboard
     logic [2:0] row, col;
     always_comb begin
-        row = y / SQUARE_SIZE;
-        col = x / SQUARE_SIZE;
+        row = y / SQUARE_SIZE_Y;
+        col = x / SQUARE_SIZE_X;
     end
 
     // Determine the color of each square (alternating black and white);
