@@ -1,6 +1,4 @@
 # Quartus Prime
-*.qpf
-*.qsf
 *.rpt
 *.summary
 *.sopcinfo
