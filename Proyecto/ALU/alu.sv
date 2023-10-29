@@ -1,6 +1,5 @@
 module alu #(parameter N_bits = 32) 
 (
-  input [3:0] opcode,
   input logic [N_bits-1:0] SrcA,
   input logic [N_bits-1:0] SrcB,
   input logic [1:0] ALUControl,

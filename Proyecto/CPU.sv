@@ -3,7 +3,7 @@ module CPU(input logic clk, reset,
 					  output logic MemWrite
 );
 
-	logic [31:0] PC, Instr, ReadData;
+	logic [31:0] PC, Instr, ReadData, ReadData1, ReadData2;
 
 	// instantiate processor and memories
 	arm arm(clk, 
@@ -29,16 +29,16 @@ module CPU(input logic clk, reset,
 	);
 	*/
 	
-	ROM rom(.address(PC),
+	ROM rom(.address(PC[4:0]),
 			  .clock(clk),
-			  .q(ReadData)
+			  .q(ReadData1)
 	);
 	
-	RAM ram(.address(DataAdr),
+	RAM ram(.address(DataAdr[4:0]),
 			  .clock(clk),
 			  .data(WriteData),
 			  .wren(1'b1),
-			  .q(ReadData)
+			  .q(ReadData2)
 	);
 	
 	

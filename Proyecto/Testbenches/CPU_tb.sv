@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module CPU_tb();
 	logic clk;
 	logic reset;
