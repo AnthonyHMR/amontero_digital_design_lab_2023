@@ -5,7 +5,7 @@ module CPU_tb();
 	logic MemWrite;
 	
 	// instantiate device to be tested
-	top dut(clk, reset, WriteData, DataAdr, MemWrite);
+	CPU CPU_instance(clk, reset, WriteData, DataAdr, MemWrite);
 	
 	// initialize test
 	initial

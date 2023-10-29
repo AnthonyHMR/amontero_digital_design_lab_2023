@@ -16,14 +16,31 @@ module CPU(input logic clk, reset,
 			  ReadData
 	);
 
+	/*
 	imem imem(PC, 
 				 Instr);
 
+	
 	dmem dmem(clk, 
 				 MemWrite, 
 				 DataAdr, 
 				 WriteData, 
 				 ReadData
 	);
+	*/
+	
+	ROM rom(.address(PC),
+			  .clock(clk),
+			  .q(ReadData)
+	);
+	
+	RAM ram(.address(DataAdr),
+			  .clock(clk),
+			  .data(WriteData),
+			  .wren(1'b1),
+			  .q(ReadData)
+	);
+	
+	
 
 endmodule
