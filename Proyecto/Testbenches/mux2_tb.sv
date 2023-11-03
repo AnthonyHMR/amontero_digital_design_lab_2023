@@ -1,7 +1,7 @@
 module mux2_tb;
 
   // Parameters
-  parameter WIDTH = 32;
+  parameter WIDTH = 8;
   
   // Inputs
   logic [WIDTH-1:0] d0, d1;
