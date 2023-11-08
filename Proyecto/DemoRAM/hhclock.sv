@@ -10,7 +10,7 @@ begin
 			count <= 1;
 			seconds <= ~seconds;
 		end else begin
-			count <= + 1;
+			count <= count + 1;
 		end
 end
 

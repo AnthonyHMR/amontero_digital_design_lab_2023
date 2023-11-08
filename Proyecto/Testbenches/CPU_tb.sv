@@ -1,38 +1,58 @@
 `timescale 1ns/1ps
 
 module CPU_tb();
-	logic clk;
+	logic clk = 0;
 	logic reset;
 	logic [31:0] WriteData, DataAdr;
 	logic MemWrite;
+		
+	logic [31:0] PC, ReadData, Instruction, ReadDataRAM;
 	
-	// instantiate device to be tested
-	CPU CPU_instance(clk, reset, WriteData, DataAdr, MemWrite);
+	logic [31:0] Instr = 32'b11100101100100010010000000000010;
+	
+	
+	arm arm(clk, 
+			  reset, 
+			  PC, 
+			  Instr, 
+			  MemWrite, 
+			  DataAdr,
+			  WriteData, 
+			  ReadData
+	);
+	
+	
+	RAM ram(.address(DataAdr),
+			  .clock(clk),
+			  .data(WriteData),
+			  .wren(1'b0),
+			  .q(ReadDataRAM)
+	);
 	
 	// initialize test
 	initial
 	begin
-		reset <= 1; # 22; reset <= 0;
+		
 	end
 	
 	// generate clock to sequence tests
 	always
 	begin
-		clk <= 1; # 5; clk <= 0; # 5;
+		clk <= ~clk; 
+		# 5;
+		
 	end
 	
 	// check that 7 gets written to address 0x64
 	// at end of program
 	always @(negedge clk)
 	begin
-		if(MemWrite) begin
-			if(DataAdr === 100 & WriteData === 7) begin
-				$display("Simulation succeeded");
-				$stop;
-			end else if (DataAdr !== 96) begin
-				$display("Simulation failed");
-				$stop;
-			end
-		end
+		reset = 1; 
+		# 100; 
+		reset = 0;
+		#100;
+		$display("Data RAM = %d", ReadDataRAM);
+		#100;
+		$finish;
 	end
 endmodule

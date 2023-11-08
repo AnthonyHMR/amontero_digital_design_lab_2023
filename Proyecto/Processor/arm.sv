@@ -1,12 +1,9 @@
-module arm(input logic clk, 
-			  input logic reset,
-			  input logic [31:0] Instr,
-			  input logic [31:0] ReadData,
-			  output logic MemWrite,
+module arm(input logic clk, reset,
 			  output logic [31:0] PC,
-			  output logic [31:0] ALUResult, 
-			  output logic [31:0] WriteData
-				
+			  input logic [31:0] Instr,
+			  output logic MemWrite,
+			  output logic [31:0] ALUResult, WriteData,
+			  input logic [31:0] ReadData
 );
 
 	logic [3:0] ALUFlags;

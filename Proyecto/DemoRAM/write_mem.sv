@@ -1,7 +1,7 @@
-module write_mem(input [2:0] btn,
-					  output enable,
-					  output [7:0] addr,
-					  output [7:0] data);
+module write_mem(input logic [2:0] btn,
+					  output logic enable,
+					  output logic[7:0] addr,
+					  output logic [7:0] data);
 					  
 always @ (btn) begin
 
