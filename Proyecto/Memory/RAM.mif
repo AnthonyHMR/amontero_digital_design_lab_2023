@@ -22,9 +22,9 @@ ADDRESS_RADIX=UNS;
 DATA_RADIX=DEC;
 
 CONTENT BEGIN
-	0   :   0;
-	1   :   1;
-	2   :   2;
+	0   :   32;
+	1   :   33;
+	2   :   34;
 	3   :   3;
 	4   :   4;
 	5   :   5;

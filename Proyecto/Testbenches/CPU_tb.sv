@@ -26,7 +26,7 @@ module CPU_tb();
 			  .clock(clk),
 			  .data(WriteData),
 			  .wren(1'b0),
-			  .q(ReadDataRAM)
+			  .q(ReadData)
 	);
 	
 	// initialize test
@@ -51,7 +51,7 @@ module CPU_tb();
 		# 100; 
 		reset = 0;
 		#100;
-		$display("Data RAM = %d", ReadDataRAM);
+		$display("Data RAM = %d", ReadData);
 		#100;
 		$finish;
 	end

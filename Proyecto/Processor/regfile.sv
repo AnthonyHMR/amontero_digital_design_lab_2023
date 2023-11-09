@@ -5,7 +5,7 @@ module regfile(input logic clk,
 					output logic [31:0] rd1, rd2
 );
 
-	logic [31:0] rf[14:0];
+	logic [31:0] rf[14:0] = '{default: 32'h0};
 	// three ported register file
 	// read two ports combinationally
 	// write third port on rising edge of clock
