@@ -6,9 +6,22 @@ module CPU_tb();
 	logic [31:0] WriteData, DataAdr;
 	logic MemWrite;
 		
-	logic [31:0] PC, ReadData, Instruction, ReadDataRAM;
+	logic [31:0] PC, ReadData, Instruction, ReadDataRAM, Instr;
 	
-	logic [31:0] Instr = 32'b11100101100100010010000000000010;
+	//logic [31:0] Instr = 32'b11100101100100010010000000000010;
+	
+	// LDR R2, [R1, #2]
+	logic [31:0] LDR = 32'b11100101100100010010000000000010;
+	
+	// STR R5, [R1, #1]
+	logic [31:0] STR = 32'b11100101101000010101000000000001;
+	
+	// ADDi R5, R1, #3
+	logic [31:0] ADD = 32'b11100010100000010101000000000011;
+	
+	
+	
+	
 	
 	
 	arm arm(clk, 
@@ -51,6 +64,45 @@ module CPU_tb();
 		# 100; 
 		reset = 0;
 		#100;
+		
+		Instr = ADD;
+		
+		#100;
+		
+		$display("WriteData = %d", WriteData);
+		$display("DataAdr = %d", DataAdr);
+		$display("MemWrite = %d", MemWrite);
+		$display("PC = %d", PC);
+		$display("ReadData = %d", ReadData);
+		$display("-------------------------------------------------------");
+		
+		#100;
+		
+		Instr = STR;
+		
+		#100;
+		
+		$display("WriteData = %d", WriteData);
+		$display("DataAdr = %d", DataAdr);
+		$display("MemWrite = %d", MemWrite);
+		$display("PC = %d", PC);
+		$display("ReadData = %d", ReadData);
+		$display("-------------------------------------------------------");
+		
+		Instr = LDR;
+		
+		#100;
+		
+		$display("WriteData = %d", WriteData);
+		$display("DataAdr = %d", DataAdr);
+		$display("MemWrite = %d", MemWrite);
+		$display("PC = %d", PC);
+		$display("ReadData = %d", ReadData);
+		$display("-------------------------------------------------------");
+		
+		
+		
+		
 		$display("Data RAM = %d", ReadData);
 		#100;
 		$finish;
