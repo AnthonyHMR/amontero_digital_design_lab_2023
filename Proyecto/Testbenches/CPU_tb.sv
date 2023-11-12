@@ -31,7 +31,7 @@ module CPU_tb();
 	begin
 		reset = 0;
 		#10
-		
+		$display("----------------------------------------------------   1");
 		$display("WriteData = %d", WriteData);
 		$display("DataAdr = %d", DataAdr);
 		$display("MemWrite = %d", MemWrite);
@@ -39,8 +39,9 @@ module CPU_tb();
 		$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
 	
-		#5
+		#10
 		
+		$display("----------------------------------------------------   2");
 		$display("WriteData = %d", WriteData);
 		$display("DataAdr = %d", DataAdr);
 		$display("MemWrite = %d", MemWrite);
@@ -48,8 +49,9 @@ module CPU_tb();
 		$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
 	
-		#5
+		#10
 		
+		$display("----------------------------------------------------   3");
 		$display("WriteData = %d", WriteData);
 		$display("DataAdr = %d", DataAdr);
 		$display("MemWrite = %d", MemWrite);
@@ -57,8 +59,9 @@ module CPU_tb();
 		$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
 	
-		#5
+		#10
 		
+		$display("----------------------------------------------------   4");
 		$display("WriteData = %d", WriteData);
 		$display("DataAdr = %d", DataAdr);
 		$display("MemWrite = %d", MemWrite);
@@ -66,8 +69,9 @@ module CPU_tb();
 		$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
 	
-		#5
+		#10
 		
+		$display("----------------------------------------------------   5");
 		$display("WriteData = %d", WriteData);
 		$display("DataAdr = %d", DataAdr);
 		$display("MemWrite = %d", MemWrite);
@@ -75,8 +79,9 @@ module CPU_tb();
 		$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
 	
-		#5
+		#10
 		
+		$display("----------------------------------------------------   6");
 		$display("WriteData = %d", WriteData);
 		$display("DataAdr = %d", DataAdr);
 		$display("MemWrite = %d", MemWrite);
@@ -84,10 +89,8 @@ module CPU_tb();
 		$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
 	
-		#5
-		
-		
-		
+		#10
+				
 		
 		$finish;
 	end
@@ -96,111 +99,3 @@ endmodule
 	
 	
 	
-	
-	/*
-	logic [31:0] WriteData, DataAdr;
-	logic MemWrite;
-		
-	logic [31:0] PC, ReadData, Instruction, ReadDataRAM, Instr;
-	
-	//logic [31:0] Instr = 32'b11100101100100010010000000000010;
-	
-	// LDR R2, [R1, #1]
-	logic [31:0] LDR = 32'b11100101100100010010000000000001;
-	
-	// STR R5, [R1, #1]
-	logic [31:0] STR = 32'b11100101101000010101000000000001;
-	
-	// ADDi R5, R1, #3
-	logic [31:0] ADD = 32'b11100010100000010101000000000011;
-	
-	
-	
-	
-	
-	
-	arm arm(clk, 
-			  reset, 
-			  PC, 
-			  Instr, 
-			  MemWrite, 
-			  DataAdr,
-			  WriteData, 
-			  ReadData
-	);
-	
-	
-	RAM ram(.address(DataAdr),
-			  .clock(clk),
-			  .data(WriteData),
-			  .wren(1'b0),
-			  .q(ReadData)
-	);
-	
-	// initialize test
-	initial
-	begin
-		
-	end
-	
-	// generate clock to sequence tests
-	always
-	begin
-		clk <= ~clk; 
-		# 5;
-		
-	end
-	
-	// check that 7 gets written to address 0x64
-	// at end of program
-	always @(negedge clk)
-	begin
-		reset = 1; 
-		# 100; 
-		reset = 0;
-		#100;
-		
-		Instr = ADD;
-		
-		#500;
-		
-		$display("WriteData = %d", WriteData);
-		$display("DataAdr = %d", DataAdr);
-		$display("MemWrite = %d", MemWrite);
-		$display("PC = %d", PC);
-		$display("ReadData = %d", ReadData);
-		$display("-------------------------------------------------------");
-		
-		#100;
-		
-		Instr = STR;
-		
-		#500;
-		
-		$display("WriteData = %d", WriteData);
-		$display("DataAdr = %d", DataAdr);
-		$display("MemWrite = %d", MemWrite);
-		$display("PC = %d", PC);
-		$display("ReadData = %d", ReadData);
-		$display("-------------------------------------------------------");
-		
-		Instr = LDR;
-		
-		#500;
-		
-		$display("WriteData = %d", WriteData);
-		$display("DataAdr = %d", DataAdr);
-		$display("MemWrite = %d", MemWrite);
-		$display("PC = %d", PC);
-		$display("ReadData = %d", ReadData);
-		$display("-------------------------------------------------------");
-		
-		
-		
-		
-		$display("Data RAM = %d", ReadData);
-		#100;
-		$finish;
-	end
-	
-	*/
