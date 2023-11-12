@@ -2,7 +2,102 @@
 
 module CPU_tb();
 	logic clk = 0;
-	logic reset;
+	logic reset = 1;
+	logic [31:0] WriteData, DataAdr, ReadData, ins;
+	logic MemWrite;
+	
+	
+	
+	
+	CPU CPU_inst(.clk(clk), 
+					 .reset(reset), 
+					 .WriteData(WriteData), 
+					 .DataAdr(DataAdr), 
+					 .ReadData(ReadData), 
+					 .MemWrite(MemWrite),
+					 .ins(ins)
+	);
+	
+	
+	always
+	begin
+		clk <= ~clk; 
+		# 5;
+		
+	end
+	
+	
+	always @(negedge clk)
+	begin
+		reset = 0;
+		#10
+		
+		$display("WriteData = %d", WriteData);
+		$display("DataAdr = %d", DataAdr);
+		$display("MemWrite = %d", MemWrite);
+		$display("ReadData = %d", ReadData);
+		$display("ins = %b", ins);
+		$display("-------------------------------------------------------");
+	
+		#5
+		
+		$display("WriteData = %d", WriteData);
+		$display("DataAdr = %d", DataAdr);
+		$display("MemWrite = %d", MemWrite);
+		$display("ReadData = %d", ReadData);
+		$display("ins = %b", ins);
+		$display("-------------------------------------------------------");
+	
+		#5
+		
+		$display("WriteData = %d", WriteData);
+		$display("DataAdr = %d", DataAdr);
+		$display("MemWrite = %d", MemWrite);
+		$display("ReadData = %d", ReadData);
+		$display("ins = %b", ins);
+		$display("-------------------------------------------------------");
+	
+		#5
+		
+		$display("WriteData = %d", WriteData);
+		$display("DataAdr = %d", DataAdr);
+		$display("MemWrite = %d", MemWrite);
+		$display("ReadData = %d", ReadData);
+		$display("ins = %b", ins);
+		$display("-------------------------------------------------------");
+	
+		#5
+		
+		$display("WriteData = %d", WriteData);
+		$display("DataAdr = %d", DataAdr);
+		$display("MemWrite = %d", MemWrite);
+		$display("ReadData = %d", ReadData);
+		$display("ins = %b", ins);
+		$display("-------------------------------------------------------");
+	
+		#5
+		
+		$display("WriteData = %d", WriteData);
+		$display("DataAdr = %d", DataAdr);
+		$display("MemWrite = %d", MemWrite);
+		$display("ReadData = %d", ReadData);
+		$display("ins = %b", ins);
+		$display("-------------------------------------------------------");
+	
+		#5
+		
+		
+		
+		
+		$finish;
+	end
+endmodule
+	
+	
+	
+	
+	
+	/*
 	logic [31:0] WriteData, DataAdr;
 	logic MemWrite;
 		
@@ -10,8 +105,8 @@ module CPU_tb();
 	
 	//logic [31:0] Instr = 32'b11100101100100010010000000000010;
 	
-	// LDR R2, [R1, #2]
-	logic [31:0] LDR = 32'b11100101100100010010000000000010;
+	// LDR R2, [R1, #1]
+	logic [31:0] LDR = 32'b11100101100100010010000000000001;
 	
 	// STR R5, [R1, #1]
 	logic [31:0] STR = 32'b11100101101000010101000000000001;
@@ -67,7 +162,7 @@ module CPU_tb();
 		
 		Instr = ADD;
 		
-		#100;
+		#500;
 		
 		$display("WriteData = %d", WriteData);
 		$display("DataAdr = %d", DataAdr);
@@ -80,7 +175,7 @@ module CPU_tb();
 		
 		Instr = STR;
 		
-		#100;
+		#500;
 		
 		$display("WriteData = %d", WriteData);
 		$display("DataAdr = %d", DataAdr);
@@ -91,7 +186,7 @@ module CPU_tb();
 		
 		Instr = LDR;
 		
-		#100;
+		#500;
 		
 		$display("WriteData = %d", WriteData);
 		$display("DataAdr = %d", DataAdr);
@@ -107,4 +202,5 @@ module CPU_tb();
 		#100;
 		$finish;
 	end
-endmodule
+	
+	*/

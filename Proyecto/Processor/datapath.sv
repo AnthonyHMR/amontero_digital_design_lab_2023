@@ -17,6 +17,8 @@ module datapath(input logic clk, reset,
 	logic [31:0] ExtImm, SrcA, SrcB, Result;
 	logic [3:0] RA1, RA2;
 	
+	//logic [31:0] PCPlus4 = 32'b0;
+	
 	// next PC logic
 	mux2 #(32) pcmux(PCPlus4, Result, PCSrc, PCNext);
 	

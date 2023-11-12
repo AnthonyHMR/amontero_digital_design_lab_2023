@@ -1,14 +1,17 @@
 module CPU(input logic clk, reset,
-			  output logic [31:0] WriteData, DataAdr,
-			  output logic MemWrite
+			  output logic [31:0] WriteData, DataAdr, ReadData,
+			  output logic MemWrite,
+			  output logic [31:0] ins
 );
 
-	logic [31:0] PC, ReadData, Instruction, ReadDataRAM;
+	logic [31:0] Instr, PC;
+		
+		
+	ROM rom(.address(PC[4:0]),
+			  .clock(clk),
+			  .q(Instr)
+	);
 	
-	logic [31:0] Instr = 32'b11100101100100010010000000000010;
-	
-	
-	// instantiate processor and memories	
 	
 	arm arm(clk, 
 			  reset, 
@@ -20,19 +23,16 @@ module CPU(input logic clk, reset,
 			  ReadData
 	);
 	
-	ROM rom(.address(PC[4:0]),
-			  .clock(clk),
-			  .q(Instruction)
-	);
+	
 	
 	RAM ram(.address(DataAdr[4:0]),
 			  .clock(clk),
 			  .data(WriteData),
-			  .wren(1'b0),
-			  .q(ReadDataRAM)
+			  .wren(MemWrite),
+			  .q(ReadData)
 	);
 	
-	
+	assign ins = Instr;
 	
 
 endmodule

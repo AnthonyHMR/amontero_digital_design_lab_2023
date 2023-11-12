@@ -25,42 +25,42 @@ module ROM_tb;
   initial begin
     address = 0;
     #10;
-	 $display("Dato: q = %d", q);
+	 $display("Dato: q = %b", q);
 	 $display("En la direccion: address = %d", address);
 	 $display("_________________________________________________");
 	 #100
 
     address = 1;
     #10;
-	 $display("Dato: q = %d", q);
+	 $display("Dato: q = %b", q);
 	 $display("En la direccion: address = %d", address);
 	 $display("_________________________________________________");
 	 #100
 
     address = 2;
     #10;
-	 $display("Dato: q = %d", q);
+	 $display("Dato: q = %b", q);
 	 $display("En la direccion: address = %d", address);
 	 $display("_________________________________________________");
 	 #100
 
     address = 3;
     #10;
-	 $display("Dato: q = %d", q);
+	 $display("Dato: q = %b", q);
 	 $display("En la direccion: address = %d", address);
 	 $display("_________________________________________________");
 	 #100
 
     address = 4;
     #10;
-	 $display("Dato: q = %d", q);
+	 $display("Dato: q = %b", q);
 	 $display("En la direccion: address = %d", address);
 	 $display("_________________________________________________");
 	 #100
 
     address = 5;
     #10;
-	 $display("Dato: q = %d", q);
+	 $display("Dato: q = %b", q);
 	 $display("En la direccion: address = %d", address);
 	 $display("_________________________________________________");
 	 #100
