@@ -16,9 +16,4 @@ assign red = (inrectBGLeft | inrectBGRight) ? 8'b11111111 : (inrectImage ? ((Rea
 assign green = (inrectBGLeft | inrectBGRight) ? 8'b11111111 : (inrectImage ? ((ReadData - 0.299 * red - 0.114 * blue) / 0.587) : 8'b00000000);
 assign blue = (inrectBGLeft | inrectBGRight) ? 8'b11111111 : (inrectImage ? ((ReadData - 0.299 * red - 0.587 * green) / 0.114) : 8'b00000000);
 
-
-//assign red = ((ReadData - 0.587 * green - 0.114 * blue) / 0.299)
-//assign green = ((ReadData - 0.299 * red - 0.114 * blue) / 0.587)
-//assign blue = ((ReadData - 0.299 * rojo - 0.587 * verde) / 0.114)
-
 endmodule
