@@ -1,7 +1,6 @@
 module CPU(input logic clk, reset,
 			  output logic [31:0] WriteData, DataAdr, ReadData,
-			  output logic MemWrite,
-			  output logic [31:0] ins
+			  output logic MemWrite
 );
 
 	logic [31:0] Instr, PC;
@@ -32,7 +31,7 @@ module CPU(input logic clk, reset,
 			  .q(ReadData)
 	);
 	
-	assign ins = Instr;
+	
 	
 
 endmodule

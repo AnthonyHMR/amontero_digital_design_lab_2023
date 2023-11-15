@@ -3,7 +3,7 @@
 module CPU_tb();
 	logic clk = 0;
 	logic reset = 1;
-	logic [31:0] WriteData, DataAdr, ReadData, ins;
+	logic [31:0] WriteData, DataAdr, ReadData;
 	logic MemWrite;
 	
 	
@@ -14,8 +14,7 @@ module CPU_tb();
 					 .WriteData(WriteData), 
 					 .DataAdr(DataAdr), 
 					 .ReadData(ReadData), 
-					 .MemWrite(MemWrite),
-					 .ins(ins)
+					 .MemWrite(MemWrite)
 	);
 	
 	
@@ -36,7 +35,7 @@ module CPU_tb();
 		$display("DataAdr = %d", DataAdr);
 		$display("MemWrite = %d", MemWrite);
 		$display("ReadData = %d", ReadData);
-		$display("ins = %b", ins);
+		//$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
 	
 		#10
@@ -46,7 +45,7 @@ module CPU_tb();
 		$display("DataAdr = %d", DataAdr);
 		$display("MemWrite = %d", MemWrite);
 		$display("ReadData = %d", ReadData);
-		$display("ins = %b", ins);
+		//$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
 	
 		#10
@@ -56,7 +55,7 @@ module CPU_tb();
 		$display("DataAdr = %d", DataAdr);
 		$display("MemWrite = %d", MemWrite);
 		$display("ReadData = %d", ReadData);
-		$display("ins = %b", ins);
+		//$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
 	
 		#10
@@ -66,7 +65,7 @@ module CPU_tb();
 		$display("DataAdr = %d", DataAdr);
 		$display("MemWrite = %d", MemWrite);
 		$display("ReadData = %d", ReadData);
-		$display("ins = %b", ins);
+		//$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
 	
 		#10
@@ -76,7 +75,7 @@ module CPU_tb();
 		$display("DataAdr = %d", DataAdr);
 		$display("MemWrite = %d", MemWrite);
 		$display("ReadData = %d", ReadData);
-		$display("ins = %b", ins);
+		//$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
 	
 		#10
@@ -86,7 +85,7 @@ module CPU_tb();
 		$display("DataAdr = %d", DataAdr);
 		$display("MemWrite = %d", MemWrite);
 		$display("ReadData = %d", ReadData);
-		$display("ins = %b", ins);
+		//$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
 	
 		#10
