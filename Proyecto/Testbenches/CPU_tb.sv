@@ -5,6 +5,7 @@ module CPU_tb();
 	logic reset = 1;
 	logic [31:0] WriteData, DataAdr, ReadData;
 	logic MemWrite;
+	//logic [31:0] ins;
 	
 	
 	
@@ -15,6 +16,7 @@ module CPU_tb();
 					 .DataAdr(DataAdr), 
 					 .ReadData(ReadData), 
 					 .MemWrite(MemWrite)
+					 //.ins(ins)
 	);
 	
 	
