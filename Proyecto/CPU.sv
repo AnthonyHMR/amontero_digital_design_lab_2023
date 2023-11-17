@@ -27,8 +27,8 @@ module CPU(input logic clk, vga_clk, reset, enable,
 	
 	
 	
-	RAM ram(.address_a(DataAdr[13:0]),
-			  .address_b(memAddress[13:0]),
+	RAM ram(.address_a(DataAdr[15:0]),
+			  .address_b(memAddress[15:0]),
 			  .clock(clk),
 			  .data_a(WriteData),
 			  .data_b(WriteData),
@@ -43,7 +43,7 @@ module CPU(input logic clk, vga_clk, reset, enable,
     if (reset) begin
       memAddress <= 0;
     end else if (enable) begin
-      if (memAddress < 10000) begin
+      if (memAddress < 65536) begin
         memAddress <= memAddress + 1;
       end
     end
