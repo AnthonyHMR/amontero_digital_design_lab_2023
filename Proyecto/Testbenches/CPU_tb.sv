@@ -31,7 +31,9 @@ module CPU_tb();
 	always @(negedge clk)
 	begin
 		reset = 0;
+		
 		#10
+		
 		$display("----------------------------------------------------   1");
 		$display("WriteData = %d", WriteData);
 		$display("DataAdr = %d", DataAdr);
@@ -89,6 +91,29 @@ module CPU_tb();
 		$display("ReadData = %d", ReadData);
 		//$display("ins = %b", ins);
 		$display("-------------------------------------------------------");
+	
+		#10
+		
+		$display("----------------------------------------------------   7");
+		$display("WriteData = %d", WriteData);
+		$display("DataAdr = %d", DataAdr);
+		$display("MemWrite = %d", MemWrite);
+		$display("ReadData = %d", ReadData);
+		//$display("ins = %b", ins);
+		$display("-------------------------------------------------------");
+	
+		#10
+		
+		$display("----------------------------------------------------   8");
+		$display("WriteData = %d", WriteData);
+		$display("DataAdr = %d", DataAdr);
+		$display("MemWrite = %d", MemWrite);
+		$display("ReadData = %d", ReadData);
+		//$display("ins = %b", ins);
+		$display("-------------------------------------------------------");
+	
+		#10
+		
 	
 		#10
 				
