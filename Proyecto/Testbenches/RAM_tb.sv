@@ -7,208 +7,209 @@ module RAM_tb;
   parameter MEM_DEPTH = 32;  // Profundidad de memoria de 32 palabras
 
   // Señales de prueba
-  reg [M-1:0] address;
+  reg [M-1:0] address_a;
+  reg [M-1:0] address_b;
   reg clock = 0;
-  reg [N-1:0] data;
-  reg wren;
-  wire [N-1:0] q;
-
-  // Instancia del módulo RAM
-  RAM ram_inst (
-    .address(address),
-    .clock(clock),
-    .data(data),
-    .wren(wren),
-    .q(q)
-  );
+  reg [N-1:0] data_a;
+  reg [N-1:0] data_b;
+  reg wren_a;
+  reg wren_b;
+  wire [N-1:0] q_a;
+  wire [N-1:0] q_b;
+  
+  
+  RAM ram_inst(
+			  .address_a(address_a[15:0]),
+			  .address_b(address_b[15:0]),
+			  .clock(clock),
+			  .data_a(data_a),
+			  .data_b(data_b),
+			  .wren_a(wren_a),
+			  .wren_b(wren_a),
+			  .q_a(q_a),
+			  .q_b(q_b)
+	);
+	
   
   // Clock generation
   always #5 clock = ~clock;
 
   // Inicialización
   initial begin	 
-	 #100;
+	 #10;
 	 
-	 address = 0;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
+	 address_a = 653;
+    wren_a = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_a = %d", q_a);
+	 $display("En la direccion: address_a = %d", address_a);
 	 
 	 
 	 $display("_________________________________________________");
 	 
-	 #100;
+	 #10;
 
-	 address = 1;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
+	 address_a = 1;
+    wren_a = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_a = %d", q_a);
+	 $display("En la direccion: address_a = %d", address_a);
 	 
 	 
 	 $display("_________________________________________________");
 	 
-	 #100;
+	 #10;
 	 
-	 address = 2;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
-	 
-	 
-	 $display("_________________________________________________");
-	 
-	 #100;
-	 
-	 address = 3;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
+	 address_a = 2;
+    wren_a = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_a = %d", q_a);
+	 $display("En la direccion: address_a = %d", address_a);
 	 
 	 
 	 $display("_________________________________________________");
 	 
-	 #100;
+	 #10;
 	 
-	 address = 4;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
-	 
-	 
-	 $display("_________________________________________________");
-	 
-	 #100;
-	 
-	 address = 5;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
+	 address_a = 3;
+    wren_a = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_a = %d", q_a);
+	 $display("En la direccion: address_a = %d", address_a);
 	 
 	 
 	 $display("_________________________________________________");
 	 
-	 #100;
+	 #10;
 	 
-	 address = 6;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
-	 
-	 
-	 $display("_________________________________________________");
-	 
-	 #100;
-	 
-	 address = 7;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
+	 address_a = 4;
+    wren_a = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_a = %d", q_a);
+	 $display("En la direccion: address_a = %d", address_a);
 	 
 	 
 	 $display("_________________________________________________");
 	 
-	 #100;
+	 #10;
+	 
+	 address_a = 5;
+    wren_a = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_a = %d", q_a);
+	 $display("En la direccion: address_a = %d", address_a);
+	 
+	 
+	 $display("_________________________________________________");
+	 
+	 #10;
+	 
+	 address_a = 6;
+    wren_a = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_a = %d", q_a);
+	 $display("En la direccion: address_a = %d", address_a);
+	 
+	 
+	 $display("_________________________________________________");
+	 
+	 #10;
+	 
+	 address_a = 7;
+    wren_a = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_a = %d", q_a);
+	 $display("En la direccion: address_a = %d", address_a);
+	 
+	 
+	 $display("_________________________________________________");
+	 $display("_________________________________________________");
+	 $display("_________________________________________________");
+	 
+	 #10;
+	 
+	 address_b = 653;
+    wren_b = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_b = %d", q_b);
+	 $display("En la direccion: address_b = %d", address_b);
+	 
+	 
+	 $display("_________________________________________________");
+	 
+	 #10;
 
-	 $display("_________________________________________________");
-	 $display("_________________________________________________");
-	 
-	 address = 0;
-    data = 32'd369;
-    wren = 1'b1;
-	 #100;
-	 $display("Guarda dato: data = %d", data);
-	 $display("En la direccion: address = %d", address);
-
-    #100;
-	 
-	 address = 0;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
+	 address_b = 1;
+    wren_b = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_b = %d", q_b);
+	 $display("En la direccion: address_b = %d", address_b);
 	 
 	 
 	 $display("_________________________________________________");
 	 
-	 #100;
+	 #10;
 	 
-	 address = 1;
-    data = 32'd123;
-    wren = 1'b1;
-	 #100;
-	 $display("Guarda dato: data = %d", data);
-	 $display("En la direccion: address = %d", address);
-
-    #100;
-	 
-	 address = 1;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
+	 address_b = 2;
+    wren_b = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_b = %d", q_b);
+	 $display("En la direccion: address_b = %d", address_b);
 	 
 	 
 	 $display("_________________________________________________");
 	 
-	 #100;
+	 #10;
 	 
-	 address = 2;
-    data = 32'd999;
-    wren = 1'b1;
-	 #100;
-	 $display("Guarda dato: data = %d", data);
-	 $display("En la direccion: address = %d", address);
-
-    #100;
-	 
-	 address = 2;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
-
-
-	 $display("_________________________________________________");
-	 $display("_________________________________________________");
-	 $display("_________________________________________________");
-	 
-	 #100;
-	 
-	 address = 0;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
+	 address_b = 3;
+    wren_b = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_b = %d", q_b);
+	 $display("En la direccion: address_b = %d", address_b);
 	 
 	 
 	 $display("_________________________________________________");
 	 
-	 #100;
-
-	 address = 1;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
+	 #10;
+	 
+	 address_b = 4;
+    wren_b = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_b = %d", q_b);
+	 $display("En la direccion: address_b = %d", address_b);
 	 
 	 
 	 $display("_________________________________________________");
 	 
-	 #100;
+	 #10;
 	 
-	 address = 2;
-    wren = 1'b0;
-	 #100;
-	 $display("Dato de salida: q = %d", q);
-	 $display("En la direccion: address = %d", address);
+	 address_b = 5;
+    wren_b = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_b = %d", q_b);
+	 $display("En la direccion: address_b = %d", address_b);
+	 
+	 
+	 $display("_________________________________________________");
+	 
+	 #10;
+	 
+	 address_b = 6;
+    wren_b = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_b = %d", q_b);
+	 $display("En la direccion: address_b = %d", address_b);
+	 
+	 
+	 $display("_________________________________________________");
+	 
+	 #10;
+	 
+	 address_b = 7;
+    wren_b = 1'b0;
+	 #10;
+	 $display("Dato de salida: q_b = %d", q_b);
+	 $display("En la direccion: address_b = %d", address_b);
 	 
 	 
 	 $display("_________________________________________________");

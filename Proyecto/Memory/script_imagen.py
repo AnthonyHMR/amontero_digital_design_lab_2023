@@ -20,7 +20,7 @@ if imagen is not None:
         for y in range(alto):
             for x in range(ancho):
                 valor_pixel = imagen[y, x]
-                linea = f'\t{valor_pixel} : {count};\n'
+                linea = f'\t{count} : {valor_pixel};\n'
                 lineas.insert(linea_objetivo + count - 1, linea)
                 count += 1
                 

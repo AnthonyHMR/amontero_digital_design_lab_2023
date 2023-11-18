@@ -1,12 +1,13 @@
 module CPU(input logic clk, vga_clk, reset, enable,
 			  output logic [31:0] WriteData, DataAdr, ReadData,
 			  output logic MemWrite,
-			  output logic [31:0] pixel
+			  output logic [31:0] pixel,
 			  //output logic [31:0] ins
+			  output logic [31:0] x
 );
 
 	logic [31:0] Instr, PC;
-	logic [31:0] memAddress;
+	logic [31:0] memAddress = 0;
 		
 		
 	ROM rom(.address(PC[7:0]),
@@ -40,14 +41,14 @@ module CPU(input logic clk, vga_clk, reset, enable,
 	
 	
 	always_ff @(posedge vga_clk) begin
-    if (reset) begin
-      memAddress <= 0;
-    end else if (enable) begin
-      if (memAddress < 65536) begin
-        memAddress <= memAddress + 1;
-      end
-    end
-  end
+		if (reset) begin
+			memAddress <= 0;
+		end else if (enable) begin
+			if (memAddress < 65536) begin
+				memAddress <= memAddress + 1;
+			end
+		end
+	end
 	
 	
 	/*
@@ -60,7 +61,7 @@ module CPU(input logic clk, vga_clk, reset, enable,
 	 );
 	 */
 	
-	//assign ins = Instr;
+	assign x = memAddress;
 	
 	
 
