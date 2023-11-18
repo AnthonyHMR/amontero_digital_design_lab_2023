@@ -1,6 +1,6 @@
 module generate_graphic (
   input logic [9:0] x, y,
-  input logic [31:0] ReadData,
+  input logic [7:0] ReadData,
   output logic [7:0] red, green, blue
 );
 
@@ -18,9 +18,9 @@ module generate_graphic (
     //red   = (inrectBGLeft | inrectBGRight) ? 8'b11111111 : (inrectImage ? ReadData[7:0] : 8'b11111111);
     //green = (inrectBGLeft | inrectBGRight) ? 8'b11111111 : (inrectImage ? ReadData[7:0] : 8'b11111111);
     //blue  = (inrectBGLeft | inrectBGRight) ? 8'b11111111 : (inrectImage ? ReadData[7:0] : 8'b11111111);
-	 red   = (inrectImage ? 8'b01010101 : ReadData[7:0]);
-    green = (inrectImage ? 8'b01010101 : ReadData[7:0]);
-    blue  = (inrectImage ? 8'b01010101 : ReadData[7:0]);
+	 red   = (inrectImage ? 8'b01010101 : ReadData);
+    green = (inrectImage ? 8'b01010101 : ReadData);
+    blue  = (inrectImage ? 8'b01010101 : ReadData);
   end
 
 endmodule

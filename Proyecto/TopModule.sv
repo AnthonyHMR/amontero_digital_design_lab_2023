@@ -15,35 +15,15 @@ module TopModule(
 	
 	pll vga_pll(.clk(clk), .vga_clk(vga_clk));
 	
-	vga_controller_2 vgaCont(vga_clk, h_sync, v_sync, sync_b, blank_b, x, y);
+	vga_controller vgaCont(vga_clk, h_sync, v_sync, sync_b, blank_b, x, y);
 	
-	generate_graphic gen_grid(x, y, pixel, red, green, blue);
-	
-	
-	
-	RAM ram(.address_a(15'b0),
-			  .address_b(memAddress[15:0]),
-			  .clock(clk),
-			  .data_a(WriteData),
-			  .data_b(WriteData),
-			  .wren_a(1'b0),
-			  .wren_b(1'b0),
-			  .q_a(ReadData),
-			  .q_b(pixel)
-	);
+	generate_graphic gen_grid(x, y, pixel[7:0], red, green, blue);
 	
 	
-	always_ff @(posedge clk) begin
-		if (memAddress < 65536) begin
-				memAddress <= memAddress + 1;
-		end
-	end
-	
-	/*
 	CPU CPU_inst(.clk(clk), 
 					 .vga_clk(vga_clk),
-					 .reset(rst), 
-					 .enable(1'b1),
+					 .reset(reset), 
+					 .enable(enable),
 					 .WriteData(WriteData), 
 					 .DataAdr(DataAdr), 
 					 .ReadData(ReadData), 
@@ -51,6 +31,5 @@ module TopModule(
 					 .pixel(pixel),
 					 .x(memAddress)
 	);	
-	*/
 	
 endmodule
