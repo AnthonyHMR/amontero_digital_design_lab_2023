@@ -53,16 +53,6 @@ module CPU(input logic clk, vga_clk, reset, enable,
 	end
 	
 	
-	/*
-	 memToVGA mtv(.clk(vga_clk),
-					  .q_b(q_b),
-					  .enable(enable),
-					  .rst(reset),
-					  .memAddress(memAddress),
-					  .pixel(pixel)
-	 );
-	 */
-	
 	assign x = memAddress;
 	
 	
