@@ -1,7 +1,7 @@
 import cv2
 
 # Carga la imagen en escala de grises
-imagen = cv2.imread('tux.jpg', cv2.IMREAD_GRAYSCALE)
+imagen = cv2.imread('cat.jpg', cv2.IMREAD_GRAYSCALE)
 
 nombre_archivo = 'RAM.mif'
 linea_objetivo = 25
