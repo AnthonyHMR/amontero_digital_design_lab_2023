@@ -13,7 +13,6 @@ synthesis/
 output_files/
 *.smsg
 *.htm
-*.txt
 *.pin
 *.sld
 *.map
