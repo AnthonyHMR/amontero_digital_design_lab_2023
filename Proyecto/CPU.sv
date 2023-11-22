@@ -41,7 +41,7 @@ module CPU(input logic clk, vga_clk, reset, enable,
 	
 	
 	always_ff @(posedge vga_clk) begin
-		if (reset) begin
+		if (~reset) begin
 			memAddress <= 0;
 		end else if (memAddress >= 65536) begin
 			memAddress <= 0;
